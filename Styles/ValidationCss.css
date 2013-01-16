@@ -1,0 +1,12 @@
+﻿body {
+}
+
+.ValidInput
+{
+    background-color : #57E964;
+}
+
+.InValidInput
+{
+    background-color : #D93F3B;
+}

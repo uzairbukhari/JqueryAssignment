@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>jQuery UI Tabs - Content via Ajax</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <link href="../Styles/myPageStyle.css" rel="stylesheet" type="text/css" />
+    <link href="../Styles/ValidationCss.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/resources/demos/style.css" />
+    <script src="../JavaScripts/MyValidator.js" type="text/javascript"></script>
+    <script src="../JavaScripts/App.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="tabs">
+        <ul>
+            <li><a href="#basicInfo">Basic Info</a></li>
+            <li><a href="#tabs-2">Interests</a></li>
+            <!--<li><a href="ajax/content3-slow.php">Tab 3 (slow)</a></li>-->
+            <li><a href="#tabs-3">Resume</a></li>
+            <li><a href="#tabs-4">Tab 4</a></li>
+        </ul>
+        <div id="basicInfo">
+            <div id="stylized" class="myform">
+                <form id="form" name="form">
+                <img alt="" src="../Images/folio3-logo.png" />
+                <hr />
+                <p>
+                    Form Validation using JavaScript.</p>
+                <label>
+                    Name <span class="small">Enter name here</span>
+                </label>
+                <input id="txtName" type="text" validationtype="required" name="Name" />
+                <label>
+                    Father Name <span class="small">Enter father name here</span>
+                </label>
+                <input id="Text1" type="text" validationtype="required" name="Father Name" />
+                <label>
+                    Email <span class="small">Enter Email here</span>
+                </label>
+                <input id="txtEmail" type="text" validationtype="email" name="Email" /><br />
+                <label>
+                    GPA <span class="small">Enter GPA here</span>
+                </label>
+                <input id="Text3" type="text" validationtype="numeric" name="GPA" /><br />
+                <label>
+                    AlphaNumeric <span class="small">Enter AlphaNumeric here</span>
+                </label>
+                <input id="Text4" type="text" validationtype="alphanumeric" name="Alpha-Numeric" /><br />
+                </form>
+                <button type="submit" onclick="namespace.Util.MyValidatorClass.FormValidatorOnclick();">
+                    Submit</button>
+                <div class="spacer">
+                </div>
+            </div>
+        </div>
+        <div id="tabs-2">
+            <div id="interest">
+                Your Interests :
+                <input id="txtInterest" type="text" />
+                <input id="btnAddInterest" type="button" value="Add" />
+                <ul id="interestList">
+                </ul>
+                <br />
+                Type of Resume :
+                <input id="rdStd" type="radio" name="Type" value="std" />Student
+                <input id="rdPro" type="radio" name="Type" value="pro" />Professional
+            </div>
+        </div>
+        <div id="tabs-3">
+        </div>
+        <div id="tabs-4">
+            <input id="btnLoad" type="button" value="Load Summary" />
+            <div id="summary">
+            </div>
+        </div>
+    </div>
+    <div id="buttonBox">
+        <input id="btnPrv" type="button"  value="Previous" />
+        <input id="btnNext" type="button" value="Next" />
+    </div>
+</body>
+</html>
