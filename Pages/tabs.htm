@@ -62,21 +62,39 @@
                 </ul>
                 <br />
                 Type of Resume :
-                <input id="rdStd" type="radio" name="Type" value="std" />Student
+                <input id="rdStd" type="radio" name="Type" value="std" checked="checked" />Student
                 <input id="rdPro" type="radio" name="Type" value="pro" />Professional
             </div>
         </div>
         <div id="tabs-3">
         </div>
         <div id="tabs-4">
-            <input id="btnLoad" type="button" value="Load Summary" />
             <div id="summary">
+                <h1>
+                    Summary</h1>
+                <table id="tbl">
+                </table>
+                <input id="btnSubmit" type="button" value="Submit" />
             </div>
         </div>
     </div>
     <div id="navigationControl" align="center">
-        <input id="btnPrv" type="button" value="Previous" />
-        <input id="btnNext" type="button" value="Next" />
+        <div id='but'>
+            <input id="btnPrv" type="button" value="Previous" />
+            <input id="btnNext" type="button" value="Next" />
+        </div>
+        <input id="gained" type="hidden" />
+        <input id="completed" type="hidden" />
+        <!--<div id="gained"></div> out of
+        <div id="completed"></div>-->
+        <br />
+        <br />
+        <div id="progressbar">
+            <div id="bar">
+            </div>
+            <div id="progess">
+            </div>
+        </div>
     </div>
 </body>
 </html>

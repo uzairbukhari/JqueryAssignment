@@ -13,13 +13,32 @@ namespace.Util.MyValidatorClass = (function () {
         "gpa": 10
     };
 
-    var getWeight = function (elementType) {
+    var getWeight = function (Element) {
         var weightValue;
-        for (weightValue in elementWeight) {
-            if (weightValue == elementType)
-                return elementWeight[weightValue];
+        var elementType = Element.getAttribute("validationtype");
+        if (elementType != null) {
+            for (weightValue in elementWeight) {
+                if (weightValue == elementType)
+                    return elementWeight[weightValue];
+            }
         }
         return 0;
+    }
+
+    var getTotalWeight = function (Element) {
+        total_Weight += getWeight(Element);
+    }
+
+    var evaluatePercentage = function (Element, IsValid) {
+        var Validated = Element.getAttribute("validated");
+        if (Validated == 'false' && IsValid) {
+            gainedWeight += getWeight(Element);
+            Element.setAttribute("validated", 'true');
+        }
+        else if (Validated == 'true' && !IsValid) {
+            gainedWeight -= getWeight(Element);
+            Element.setAttribute("validated", 'false');
+        }
     }
 
     var requiredField_Validation = function (text) {
@@ -56,41 +75,55 @@ namespace.Util.MyValidatorClass = (function () {
 
     var bind_Validator = function () {
         var elements = $('input:text');
+        total_Weight = 0;
         for (var i = 0; i < elements.length; i++) {
             (function (index) {
                 var element = elements[index];
-                element.setAttribute("validated", false);
+                element.setAttribute("validated", 'false');
+                getTotalWeight(element);
                 element.onblur = function () {
                     Form_Validator(element);
                 }
             })(i);
         }
+        $('#completed').val(total_Weight);
+        namespace.Util.Design.PercentageBar();
     }
 
     var Form_Validator = function (Element) {
+        var result = false;
         switch (Element.getAttribute("validationtype")) {
             case 'required':
-                namespace.Util.Design.SetColorOnvalidation(requiredField_Validation(Element.value), Element);
+                result = requiredField_Validation(Element.value);
+                namespace.Util.Design.SetColorOnvalidation(result, Element);
                 break;
             case 'numeric':
-                namespace.Util.Design.SetColorOnvalidation(numeric_Validation(Element.value), Element);
+                result = numeric_Validation(Element.value);
+                namespace.Util.Design.SetColorOnvalidation(result, Element);
                 break;
             case 'email':
-                namespace.Util.Design.SetColorOnvalidation(email_Validation(Element.value), Element);
+                result = email_Validation(Element.value);
+                namespace.Util.Design.SetColorOnvalidation(result, Element);
                 break;
             case 'alphanumeric':
-                namespace.Util.Design.SetColorOnvalidation(alphaNumeric_Validation(Element.value), Element);
+                result = alphaNumeric_Validation(Element.value);
+                namespace.Util.Design.SetColorOnvalidation(result, Element);
                 break;
             case 'gpa':
-                namespace.Util.Design.SetColorOnvalidation(GPA_Validation(Element.value), Element);
+                result = GPA_Validation(Element.value);
+                namespace.Util.Design.SetColorOnvalidation(result, Element);
                 break;
         }
+        evaluatePercentage(Element, result);
+        $('#gained').val(gainedWeight);
+        namespace.Util.Design.PercentageBar();
     }
     return {
         totalWeight: total_Weight,
         FormValidator: Form_Validator,
         FormValidatorOnclick: FormValidator_Onclick,
-        bindValidator: bind_Validator
+        bindValidator: bind_Validator,
+        gained_Weight: gainedWeight
     };
 })();
 
@@ -98,6 +131,12 @@ namespace.Util.Design = {
     SetColorOnvalidation: function (Result, Element) {
         var className = Result ? "ValidInput" : "InValidInput";
         Element.setAttribute("class", className);
+    },
+
+    PercentageBar: function () {
+        $('#bar').css('width', CompletionPercentage() + '%');
     }
 };
+
+
 

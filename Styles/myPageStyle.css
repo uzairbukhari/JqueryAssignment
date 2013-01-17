@@ -20,6 +20,7 @@ p, h1, form, button
     margin: 0 auto;
     width: 400px;
     padding: 14px;
+    height: auto;
 }
 
 /* ----------- stylized ----------- */
@@ -101,4 +102,96 @@ p, h1, form, button
     color: #FFFFFF;
     font-size: 11px;
     font-weight: bold;
+}
+
+/*Progress Bar*/
+
+#progressbar{
+    width:25%;
+    height:15px;
+    border:1px solid #000;
+    overflow:hidden; 
+    
+    }
+#bar
+{
+    float : left;
+    height:15px;
+    border-right: 1px solid #000000;
+    background: #d65946; }
+#progess {
+    color: #000000;
+    font-size: 15px;
+    font-style: italic;
+    font-weight: bold;
+    left: 25px;
+    position: relative;
+    top: -16px; 
+}
+
+#custom
+{
+    
+} 
+
+#custom label
+{
+    display: block;
+    font-weight: bold;
+    text-align: right;
+    width: 140px;
+    float: left;
+}
+
+#custom input
+{
+    float: left;
+    font-size: 12px;
+    padding: 4px 2px;
+    border: solid 1px #aacfe4;
+    width: 200px;
+    margin: 2px 0 20px 10px;
+}
+
+.customClass
+{
+    width: 400px;
+    padding: 14px;
+    height: 170px;
+}
+
+
+#tbl
+{
+      
+}
+
+#tbl tr
+{
+      background-color:#666666;
+      color : black;
+}
+
+#tbl tr:nth-child(2n+1)
+{
+    background-color:#ebf4fb;
+}
+
+#tbl tr:odd
+{
+    background-image:black;
+    color:White;
+}
+
+#tbl td
+{
+    width: 200px;
+    font-size: 12px;
+    padding : 10px; 
+    margin: 2px 0 20px 10px;
+}
+
+#tbl td:nth-child(2n+1)
+{
+    font-weight:bolder;
 }
