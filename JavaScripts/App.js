@@ -21,7 +21,7 @@
 
     $('input:radio').bind('click', loadCustomTab);
 
-    bindValidator(); // Bind the validator to all the input controls
+    namespace.Util.MyValidatorClass.bindValidator();
 });
 
 var addInterest = function () {
@@ -56,17 +56,6 @@ var createSummary = function () {
         $('#summary').append('<tr><td>' + a.name + '</td><td> ' + a.value + '</td></tr>');
     }
     $('#summary').append('</table>');
-    alert(elements.length);
+    alert(namespace.Util.MyValidatorClass.totalWeight);
 }
 
-var bindValidator = function () {
-    var elements = $('input:text');
-    for (var i = 0; i < elements.length; i++) {
-        (function (index) {
-            var element = elements[index];
-            element.onkeyup = function () {
-                namespace.Util.MyValidatorClass.FormValidator(element);
-            }
-        })(i);
-    }
-}

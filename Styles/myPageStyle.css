@@ -82,13 +82,16 @@ p, h1, form, button
     font-weight: bold;
 }
 
-#buttonBox
+#navigationControl
 {
+    padding: 14px;
     clear: both;
     margin-left: auto;
+    border: solid 2px #b7ddf2;
+    background: #ebf4fb;
 }
 
-#buttonBox input
+#navigationControl input
 {
     width: 125px;
     height: 31px;
